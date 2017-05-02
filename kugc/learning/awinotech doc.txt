@@ -1,0 +1,9 @@
+add a manage posts page where I can delete multiple posts without leaving it.
+Remove texts showing up when link hover
+Find a way to create a new category during post creation
+Image doesn't have to be included.
+Include image during post-time
+how to cut a sentence within a word not a letter
+Upload images in the exact same format
+Image links to sth
+create profiles page
