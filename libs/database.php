@@ -1,23 +1,55 @@
 <?php
 class database
 {
-    public $host = DB_HOST;
-    public $user = DB_USER;
-    public $pass = DB_PASS;
-    public $db_name = DB_NAME;
+//     public $host = DB_HOST;
+//     public $user = DB_USER;
+//     public $pass = DB_PASS;
+//     public $db_name = DB_NAME;
 
-    public $link;
+//     public $link;
 
-    public function __construct()
-    {
-        $this->connect();
-    }
+//     public function __construct()
+//     {
+//         $this->connect();
+//     }
 
-    private function connect()
-    {
-        $this->link = new mysqli($this->host, $this->user, $this->pass, $this->db_name);
-    }
+//     private function connect()
+//     {
+//         $this->link = new mysqli($this->host, $this->user, $this->pass, $this->db_name);
+//     }
 
+    private $link;
+
+        public function __construct() {
+            // Notice that private connection information is *NOT* part of the source
+            // and therefore does not end up in public repos, etc.
+            $connectionString = getenv("MYSQLCONNSTR_defaultConnection");
+            $varsString = str_replace(";","&", $connectionString);
+            parse_str($varsString);
+
+            $host = $Data_Source;
+            $user = $User_Id;
+            $pass = $Password;
+            $db = $Database;
+
+            try{
+                $this->link = new PDO("mysql:host=".$host.";dbname=".$db, $user, $pass);
+                $this->link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            }
+            catch (PDOException $e){
+                echo "Error: Unable to connect to MySQL: ". $e->getMessage();
+                die;
+            }
+
+//             $this->InitializeImageTable();
+        }   
+
+        public function __destruct() {
+            $this->link = null;
+        }
+    
+    
     public function select($query)
     {
         $result = $this->link->query($query);
