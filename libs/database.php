@@ -15,8 +15,23 @@ class database
 
     private function connect()
     {
-        $this->link = new mysqli($this->host, $this->user, $this->pass, $this->db_name);
+        $this->link = try {
+    $conn = new PDO("sqlsrv:server = tcp:kugc.database.windows.net,1433; Database = kugc", "vkoll29", "{your_password_here}");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+}
+                //new mysqli($this->host, $this->user, $this->pass, $this->db_name);
     }
+        
+        
+        
+  
+        
+        
+        
 
 //     private $link;
 
