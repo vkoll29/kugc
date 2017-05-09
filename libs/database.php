@@ -15,9 +15,9 @@ class database
 
     private function connect()
     {
-        $this->link = try {
-    $conn = new PDO("sqlsrv:server = tcp:kugc.database.windows.net,1433; Database = kugc", "vkoll29", "{your_password_here}");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      try {
+    $this->link = new PDO("sqlsrv:server = tcp:kugc.database.windows.net,1433; Database = kugc", "vkoll29", "{your_password_here}");
+    $this->link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
     print("Error connecting to SQL Server.");
@@ -25,13 +25,7 @@ catch (PDOException $e) {
 }
                 //new mysqli($this->host, $this->user, $this->pass, $this->db_name);
     }
-        
-        
-        
-  
-        
-        
-        
+                
 
 //     private $link;
 
@@ -60,9 +54,9 @@ catch (PDOException $e) {
 // //             $this->InitializeImageTable();
 //         }   
 
-//         public function __destruct() {
-//             $this->link = null;
-//         }
+        public function __destruct() {
+            $this->link = null;
+        }
     
     
     public function select($query)
