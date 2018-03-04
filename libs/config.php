@@ -1,5 +1,5 @@
 <?php
 define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "");
-define("DB_NAME", "kugc");
+define("DB_USER", "sukug");
+define("DB_PASS", "sukug");
+define("DB_NAME", "kug");

@@ -16,11 +16,11 @@ $cats = $db->select($query);
 if(isset($_POST['submit']))
 {
     //creating variables for inserting into database
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $category = $_POST['category'];
+    $title = mysqli_real_escape_string($db->link, $_POST['title']);
+    $content = mysqli_real_escape_string($db->link, $_POST['content']);
+    $category = mysqli_real_escape_string($db->link, $_POST['category']);
     $author = $_SESSION['author'];
-    $tags = $_POST['tags'];
+    $tags = mysqli_real_escape_string($db->link, $_POST['tags']);
     //creating image variable
     $image = $_FILES['image']['name'];
     $image_tmp = $_FILES['image']['tmp_name'];
@@ -35,6 +35,11 @@ if(isset($_POST['submit']))
         move_uploaded_file($image_tmp, "../images/$image");
         $query = "INSERT INTO posts (category_id, title, content, author, image, tags) VALUES ('$category', '$title', '$content', '$author', '$image', '$tags')";
         $run =$db->insert($query);
+        if(!$query){
+            echo(mysqli_error($run));
+        }else{
+            echo"Success";
+        }
 
     }
 }

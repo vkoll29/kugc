@@ -74,7 +74,7 @@ if(isset($_POST['login']))
             $_SESSION['signed_in'] = TRUE;
             while ($row = $user->fetch_assoc())
             {
-                $_SESSION['author'] = $row['author'];
+                $_SESSION['author'] = $row['username'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['user_id'] = $row['id'];
             }
