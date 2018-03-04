@@ -14,9 +14,13 @@ $cats = $db->select($query);
     <div class="sidebar-module">
         <h4>Categories</h4>
         <ol class="list-unstyled">
-            <?php while ($row = $cats->fetch_array()) : ?>
-            <li><a href="category.php?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></li>
-            <?php endwhile; ?>
+            <?php
+            if(!$cats){
+                echo "There are no categories created yet";
+            }else{
+                while ($row = $cats->fetch_array()) : ?>
+                <li><a href="category.php?id=<?php echo $row['id']; ?>"><?php echo $row['title']; ?></a></li>
+                <?php endwhile; }?>
         </ol>
     </div>
 </div><!-- /.blog-sidebar -->

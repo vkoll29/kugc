@@ -32,9 +32,9 @@ $db = new database();
     <div class="blog-masthead">
         <div class="container">
             <nav class="blog-nav">
-                <a class="blog-nav-item active" href="index.php">Dash Board</a>
+                <a class="blog-nav-item" href="index.php">Dash Board</a>
                 <a class="blog-nav-item" href="add_post.php">Add New Post</a>
-                <a class="blog-nav-item" href="add_category.php">Add New Category</a>
+                <a class="blog-nav-item active" href="add_category.php">Add New Category</a>
                 <a class="blog-nav-item pull-right" href="../index.php">View Blog</a>
                 <a class="blog-nav-item pull-right" href="logout.php">Logout</a>
             </nav>

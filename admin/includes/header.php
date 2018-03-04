@@ -71,7 +71,7 @@ $cats = $db->select($query);
                 else{ ?>
                          </td>
                 </tr>
-
+                <tr>
                     <th>Post ID</th>
                     <th>Post Title</th>
                     <th>Post Author</th>
@@ -96,6 +96,15 @@ $cats = $db->select($query);
                     <td colspan="2"><h1>Manage Your Categories</h1></td>
                 </tr>
                 <tr>
+                    <td>
+                        <?php
+                        if(!$cats){
+                            echo "There are no categories created yet.";
+                        }else{ ?>
+
+                    </td>
+                </tr>
+                <tr>
                     <th>Category ID</th>
                     <th>Category Title</th>
                 </tr>
@@ -104,6 +113,6 @@ $cats = $db->select($query);
                         <td> <?php echo $row1['id'] ; ?></td>
                         <td><a href="edit_category.php?id=<?php echo $row1['id']; ?>" ><?php echo $row1['title'] ; ?></a></td>
                     </tr>
-                <?php endwhile; ?>
+                <?php endwhile; }?>
             </table>
         </div><!-- /.blog-main -->
